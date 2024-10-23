@@ -47,7 +47,7 @@ public class EmployeeService
         List<EmployeeResponseDTO> responseDTOS=new ArrayList<>();
         for(Employee e : list)
         {
-            responseDTOS.add(employeeToResponseDTO(e));
+             responseDTOS.add(employeeToResponseDTO(e));
         }
         return responseDTOS;
     }

@@ -2,13 +2,13 @@ package SpringBoot_MysqlDB.com.spring.mysql.demo.aop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalTime;
 
 @Aspect
 @Component
@@ -16,6 +16,14 @@ import org.springframework.stereotype.Component;
 public class LoggingAdvice
 {
 
+//    @Before("execution(* SpringBoot_MysqlDB.com.spring.mysql.demo.*.*.*(..))")
+//    public Object logs(ProceedingJoinPoint joinPoint) throws Throwable
+//    {
+//        log.info("Method Called {}", joinPoint.getSignature().getName() +" from "+ joinPoint.getTarget().getClass());
+//        Object obj=joinPoint.proceed();
+//        log.info("Method Called {}", joinPoint.getSignature().getName() +" from "+ joinPoint.getTarget().getClass());
+//        return obj;
+//    }
     @Around(value = "execution(* SpringBoot_MysqlDB.com.spring.mysql.demo.*.*.*(..))")
     public Object applicationLogger(ProceedingJoinPoint pjp) throws Throwable
     {

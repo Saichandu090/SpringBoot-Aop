@@ -6,6 +6,9 @@ import SpringBoot_MysqlDB.com.spring.mysql.demo.service.EmployeeService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +22,9 @@ public class EmployeeController
     private EmployeeService service;
 
     @PostMapping("/addEmp")
-    public EmployeeResponseDTO addEmp(@Valid @RequestBody EmployeeRequestDTO employeeRequestDTO)
+    public ResponseEntity<EmployeeResponseDTO> addEmp(@Valid @RequestBody EmployeeRequestDTO employeeRequestDTO)
     {
-        return service.addEmployee(employeeRequestDTO);
+        return new ResponseEntity<EmployeeResponseDTO>(service.addEmployee(employeeRequestDTO), HttpStatus.CREATED);
     }
 
     @GetMapping("/*")
